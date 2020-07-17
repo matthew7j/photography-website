@@ -1,0 +1,41 @@
+.toolbar {
+  background-color: rgba(255, 255, 255, .3);
+  color: #282c34;
+  border: none;
+}
+
+.typography {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.typography a {
+  color: #282c34;
+  padding: 15px;
+  font-weight: light;
+  font-family: 'Titillium Web';
+  font-size: large;
+}
+
+.typography a:hover {
+  color: #d7d3cb;
+  text-decoration: none;
+}
+
+.typographyInverted {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.typographyInverted a {
+  color: #d7d3cb;
+  padding: 15px;
+  font-weight: light;
+  font-family: 'Titillium Web';
+  font-size: large;
+}
+
+.typographyInverted a:hover {
+  color: #a7d3cb;
+  text-decoration: none;
+}

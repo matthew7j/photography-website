@@ -1,0 +1,38 @@
+import React, { Fragment } from 'react';
+import { AppBar, Link, Toolbar, Typography } from '@material-ui/core';
+
+import classes from './NavigationBar.module.css';
+
+const NavigationBar = props => {
+  let typographyClass = classes.typography;
+  if (props.inverted) {
+    typographyClass = classes.typographyInverted;
+  }
+  return (
+    <Fragment>
+      <AppBar style = {{ background: 'transparent', border: 'none', boxShadow: 'none',  zIndex: 1 }}>
+        <Toolbar className = { classes.toolbar }>
+          <Typography className = { typographyClass }>
+            <Link className = { classes.link } href = '/'>
+              HOME
+            </Link>
+            <Link className = { classes.link } href = '/photos'>
+              PHOTOS
+            </Link>
+            <Link className = { classes.link } href = '#'>
+              GEAR
+            </Link>
+            <Link className = { classes.link } href = '#'>
+              ABOUT ME
+            </Link>
+            <Link className = { classes.link } href = '#'>
+              CONTACT
+            </Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Fragment>
+  );
+};
+
+export default NavigationBar;
