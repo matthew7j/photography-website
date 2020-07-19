@@ -17,6 +17,19 @@
   color: black;
 }
 
+.addToCart {
+  background-color: #383737;
+  margin: 0;
+  color: #d7d3cb;
+  border: 1px solid rgba(255, 255, 255, .1);
+  padding: 10px;
+}
+
+.addToCart:hover {
+  background-color: #444444;
+  color: #d7d3cb;
+}
+
 .button:disabled {
   color: #ccc;
   cursor: not-allowed;

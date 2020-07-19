@@ -1,0 +1,37 @@
+.purchaseModal {
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: #d7d3cb;
+  background-color: #1F1F1F;
+  outline: none;
+
+  font-weight: light;
+  font-family: 'Titillium Web';
+  font-size: large;
+  z-index: 2;
+}
+
+.purchaseModalContainer {
+  width: 600px;
+  margin: 0 auto;
+  color: #d7d3cb;
+  outline: none;
+
+  font-weight: light;
+  font-family: 'Titillium Web';
+  font-size: large;
+  z-index: 2;
+}
+
+.purchaseModal h2{
+  font-weight: lighter;
+  padding: 10px;
+  margin: 0;
+}
+
+.purchaseModalContainer h2{
+  font-weight: lighter;
+  padding: 10px;
+  margin: 0;
+}

@@ -2,20 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Modal } from '@material-ui/core';
 
+import Button from '../Button/Button';
+import PurchaseModalTabPanel from '../PurchaseModalTabPanel/PurchaseModalTabPanel';
+import classes from './PurchaseModal.module.css';
+
 const PurchaseModal = props => {
   return (
     <Modal
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
+        aria-labelledby = 'simple-modal-title'
+        aria-describedby = 'simple-modal-description'
+        BackdropProps = {{ style: { backgroundColor: 'rgba(0, 0, 0, .9)'}}}
         open = { props.open }
-        onClose={ () => props.close() }
+        onClose = { () => props.close() }
+        style = {{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
-        <div>
-            <h2>Simple React Modal</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim, non pharetra est ultrices et.
-            </p>
+      <div className = { classes.purchaseModalContainer }>
+        <h2>Choose Product</h2>
+        <div className = { classes.purchaseModal }>
+          <PurchaseModalTabPanel/>
+          <div style = {{ margin: '0 auto', width: '93px', marginBottom: '10px' }}>
+            <Button btnType = { 'addToCart' }>Add to Cart</Button>
+          </div>
         </div>
+      </div>
     </Modal>
   );
 };

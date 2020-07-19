@@ -1,0 +1,10 @@
+.root {
+  width: 100%;
+  max-width: 360;
+}
+
+.nested {
+  padding-left: 15px;
+  font-size: x-small;
+  font-weight: lighter;
+}
