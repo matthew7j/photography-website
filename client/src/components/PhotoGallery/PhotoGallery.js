@@ -1,76 +1,56 @@
-import React, { Component, Fragment } from 'react';
-
+import React, { Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Gallery from 'react-photo-gallery';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 
-// import classes from './PhotoGallery.module.css';
+import * as actionTypes from '../../store/actions';
 
 let listOfImages = [];
 let photos;
 
-class PhotoGallery extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      photoIndex: 0,
-      isOpen: false
-    };
-  }
-
-  importAll = r => {
+const PhotoGallery = props => {
+  const importAll = r => {
     return r.keys().map(r);
   }
 
-  openModal = (event, { index }) => {
-    this.setState({
-      isOpen: true,
-      photoIndex: index
-    })
-  };
-
-  closeModal = () => {
-    this.setState({
-      isOpen: false
-    })
-  };
-
-  clickedButton = photoIndex => {
-    console.log(`Clicked image: ${photos[photoIndex]}`);
+  const clickedButton = (e, data) => {
+    props.onImageClick(data);
+    props.history.push(`/photos/${data.index}`);
   }
 
-  render = () => {
-    const { photoIndex, isOpen } = this.state;
-
-    if (!photos) {
-      photos = this.importAll(require.context('../../../../images', false, /\.(png|jpe?g|svg)$/));
-      photos.forEach(photo => {
-        const obj = {};
-        obj.src = photo;
-        obj.width = 320;
-        obj.height = 174;
-        listOfImages.push(obj);
-      });
-    }
-
-    return (
-      <Fragment>
-        <div style = {{ padding: '100px' }} >
-          <Gallery photos = { listOfImages } enableLightbox = { true } onClick = { this.openModal }/>
-          { isOpen && (
-            <Lightbox
-              mainSrc = { photos[photoIndex] }
-              onCloseRequest = { this.closeModal }
-              imagePadding = { 100 }
-              toolbarButtons = { [<button onClick = {() => this.clickedButton(photoIndex) }>Purchase me</button>] }
-              reactModalStyle = {{ zIndex: 2 }}
-            />
-          )}
-        </div>
-      </Fragment>
-    );
+  if (!photos) { 
+    photos = importAll(require.context('../../../../images', false, /\.(png|jpe?g|svg)$/));
+    photos.forEach(photo => {
+      const obj = {};
+      obj.src = photo;
+      obj.width = 320;
+      obj.height = 174;
+      listOfImages.push(obj);
+    });
   }
+
+  return (
+    <Fragment>
+      <Gallery photos = { listOfImages } onClick = { (e, data) => clickedButton(e, data) } margin = { 5 } />
+    </Fragment>
+  );
 };
 
-export default PhotoGallery;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    image: state.image
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onImageClick: (image) => {
+      return dispatch({
+        type: actionTypes.SET_IMAGE,
+        image
+      });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PhotoGallery));

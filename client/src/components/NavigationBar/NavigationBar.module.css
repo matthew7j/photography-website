@@ -2,6 +2,10 @@
   background-color: rgba(255, 255, 255, .3);
   color: #282c34;
   border: none;
+  margin-bottom: 10px;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
 }
 
 .typography {
@@ -18,7 +22,7 @@
 }
 
 .typography a:hover {
-  color: #d7d3cb;
+  color: rgba(0, 0, 0, .4);
   text-decoration: none;
 }
 
@@ -36,6 +40,6 @@
 }
 
 .typographyInverted a:hover {
-  color: #a7d3cb;
+  color: black;
   text-decoration: none;
 }

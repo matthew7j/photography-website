@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { AppBar, Link, Toolbar, Typography } from '@material-ui/core';
+import { Link, Toolbar, Typography } from '@material-ui/core';
 
 import classes from './NavigationBar.module.css';
 
@@ -10,8 +10,7 @@ const NavigationBar = props => {
   }
   return (
     <Fragment>
-      <AppBar style = {{ background: 'transparent', border: 'none', boxShadow: 'none',  zIndex: 1 }}>
-        <Toolbar className = { classes.toolbar }>
+        <Toolbar className = { classes.toolbar } disableGutters = { true }>
           <Typography className = { typographyClass }>
             <Link className = { classes.link } href = '/'>
               HOME
@@ -30,7 +29,6 @@ const NavigationBar = props => {
             </Link>
           </Typography>
         </Toolbar>
-      </AppBar>
     </Fragment>
   );
 };

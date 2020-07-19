@@ -1,10 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
 import './index.css';
 import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
 import WebFont from 'webfontloader';
 import { BrowserRouter } from 'react-router-dom';
+
+import reducer from './store/reducer';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const store = createStore(persistedReducer, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const persistor = persistStore(store);
 
 WebFont.load({
   google: {
@@ -14,9 +33,13 @@ WebFont.load({
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store = { store }>
+      <PersistGate loading= { null } persistor = { persistor }>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,23 @@
+.button {
+  background-color: #6DA9FF;
+  border: 1px black solid;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px 10px;
+  margin: auto;
+  font-weight: lighter;
+  text-align: center;
+  font-size: smaller;
+}
+
+.button:hover {
+  background-color: #C8DFFF;
+  color: black;
+}
+
+.button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
