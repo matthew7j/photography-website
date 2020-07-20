@@ -5,6 +5,7 @@ import BackgroundImageContainer from '../../components/BackgroundImageContainer/
 import PhotoGallery from '../../components/PhotoGallery/PhotoGallery';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Photo from '../../components/Photo/Photo';
+import Cart from '../../components/Cart/Cart';
 import classes from './App.module.css';
 
 class App extends Component {
@@ -36,6 +37,14 @@ class App extends Component {
                 <Fragment>
                   <NavigationBar inverted = { false } ></NavigationBar>
                   <Photo/>
+                </Fragment>
+              )}
+            />
+
+            <Route exact path = '/cart'
+              render = { () => (
+                <Fragment>
+                  <Cart></Cart>
                 </Fragment>
               )}
             />

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { AppBar, Box, styled, Tab, Tabs, Typography } from '@material-ui/core';
+import { AppBar, Box, styled, Tab, Tabs } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import PurchaseModalListPaperPrints from '../PurchaseModalListPaperPrints/PurchaseModalListPaperPrints';
@@ -35,7 +35,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p = { 2 }>
-          <Typography> { children } </Typography>
+          { children }
         </Box>
       )}
     </div>
@@ -71,11 +71,11 @@ const PurchaseModalTabPanel = props => {
             <StyledTab label = 'Wall Art' { ...a11yProps(1) } />
           </StyledTabs>
         </AppBar>
-        <TabPanel value = { value } index = { 0 }>
-          <PurchaseModalListPaperPrints/>
+        <TabPanel component = 'div' value = { value } index = { 0 }>
+          <PurchaseModalListPaperPrints clicked = { props.clicked }/>
         </TabPanel>
         <TabPanel value = { value } index = { 1 }>
-          <PurchaseModalListWallArt/>
+          <PurchaseModalListWallArt clicked = { props.clicked }/>
         </TabPanel>
       </div>
     </Fragment>

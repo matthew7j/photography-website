@@ -4,6 +4,7 @@ import { Collapse, List, ListItem, ListItemText, styled } from '@material-ui/cor
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import classes from './PurchaseModalListPaperPrints.module.css';
+import circularJson from 'circular-json';
 
 const StyledListItemText = styled(ListItemText)({
   fontSize: 'small'
@@ -23,6 +24,38 @@ const PurchaseModalListPaperPrints = props => {
   const [openOther, setOpenOther] = useState(false);
   const [openSquare, setOpenSquare] = useState(false);
 
+  const importAll = r => {
+    return r.keys().map(r);
+  }
+  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[1].paperPrints;
+
+  const standardPrintOptions = printOptions['Standard Sizes'];
+  const standardJSX = standardPrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
+  const otherPrintOptions = printOptions['Other Sizes'];
+  const otherJSX = otherPrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
+  const squarePrintOptions = printOptions['Square Sizes'];
+  const squareJSX = squarePrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
   return (
     <List
       component = 'nav'
@@ -35,24 +68,7 @@ const PurchaseModalListPaperPrints = props => {
       </ListItem>
       <Collapse in = { openStandard } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '8 x 10 Print (Lustre)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '8 x 10 Print (Metallic)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '12 x 18 Print (Lustre)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '12 x 18 Print (Metallic)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '16 x 24 Print (Lustre)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested } >
-            <StyledListItemText disableTypography className = { classes.nested } primary = '16 x 24 Print (Metallic)' />
-          </StyledListItem>
+          { standardJSX }
         </List>
       </Collapse>
       <ListItem button onClick = { () => setOpenOther(!openOther) }>
@@ -61,12 +77,7 @@ const PurchaseModalListPaperPrints = props => {
       </ListItem>
       <Collapse in = { openOther } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '30 x 45 Print (Lustre)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '30 x 45 Print (Metallic)' />
-          </StyledListItem>
+          { otherJSX }
         </List>
       </Collapse>
       <ListItem button onClick = { () => setOpenSquare(!openSquare) }>
@@ -75,15 +86,7 @@ const PurchaseModalListPaperPrints = props => {
       </ListItem>
       <Collapse in = { openSquare } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '12 x 12 Print' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '24 x 24 Print (Lustre)' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '24 x 24 Print (Metallic)' />
-          </StyledListItem>
+          { squareJSX }
         </List>
       </Collapse>
     </List>

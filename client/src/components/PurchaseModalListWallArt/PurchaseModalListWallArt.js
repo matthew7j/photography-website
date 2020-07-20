@@ -23,6 +23,38 @@ const PurchaseModalListWallArt = props => {
   const [openMetal, setOpenMetal] = useState(false);
   const [openAcrylic, setOpenAcrylic] = useState(false);
 
+  const importAll = r => {
+    return r.keys().map(r);
+  }
+  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[1].wallArt;
+
+  const canvasPrintOptions = printOptions['Traditional Canvas'];
+  const canvasJSX = canvasPrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
+  const metalPrintOptions = printOptions['Metal'];
+  const metalJSX = metalPrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
+  const acrylicPrintOptions = printOptions['Acrylic Metal'];
+  const acrylicJSX = acrylicPrintOptions.map(option => {
+    return (
+      <StyledListItem button key = { option.type } className = { classes.nested } onClick = { () => props.clicked(option.type, option.price) }>
+        <StyledListItemText disableTypography className = { classes.nested } primary = { option.type } />
+      </StyledListItem>
+    )
+  });
+
   return (
     <List
       component = 'nav'
@@ -35,24 +67,7 @@ const PurchaseModalListWallArt = props => {
       </ListItem>
       <Collapse in = { openCanvas } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '16 x 24 Traditional Canvas' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '20 x 30 Traditional Canvas' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '24 x 36 Traditional Canvas' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '30 x 45 Traditional Canvas' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '36 x 36 Traditional Canvas' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '40 x 60 Traditional Canvas' />
-          </StyledListItem>
+          { canvasJSX }
         </List>
       </Collapse>
       <ListItem button onClick = { () => setOpenMetal(!openMetal) }>
@@ -61,27 +76,7 @@ const PurchaseModalListWallArt = props => {
       </ListItem>
       <Collapse in = { openMetal } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '12 x 18 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '16 x 24 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '20 x 30 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '24 x 36 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '30 x 45 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '40 x 60 Float Mounted MetalPrint' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '40 x 90 Float Mounted MetalPrint' />
-          </StyledListItem>
+          { metalJSX }
         </List>
       </Collapse>
       <ListItem button onClick = { () => setOpenAcrylic(!openAcrylic) }>
@@ -90,15 +85,7 @@ const PurchaseModalListWallArt = props => {
       </ListItem>
       <Collapse in = { openAcrylic } timeout = 'auto' unmountOnExit>
         <List component = 'div' disablePadding>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '20 x 30 Acrylic Metal Print' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '24 x 36 Acrylic Metal Print' />
-          </StyledListItem>
-          <StyledListItem button className = { classes.nested }>
-            <StyledListItemText disableTypography className = { classes.nested } primary = '30 x 45 Acrylic Metal Print' />
-          </StyledListItem>
+          { acrylicJSX }
         </List>
       </Collapse>
     </List>

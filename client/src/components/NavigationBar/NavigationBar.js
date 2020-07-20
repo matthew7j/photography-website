@@ -27,6 +27,9 @@ const NavigationBar = props => {
             <Link className = { classes.link } href = '#'>
               CONTACT
             </Link>
+            <Link className = { classes.link } href = '/cart'>
+              CART
+            </Link>
           </Typography>
         </Toolbar>
     </Fragment>

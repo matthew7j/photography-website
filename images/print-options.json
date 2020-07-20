@@ -1,0 +1,117 @@
+{
+  "paperPrints": {
+    "Standard Sizes": [
+      {
+        "type": "8 x 10 Print (Lustre)",
+        "price": 35
+      }, {
+        "type": "8 x 10 Print (Metallic)",
+        "price": 35
+      }, {
+        "type": "12 x 18 Print (Lustre)",
+        "price": 55
+      }, {
+        "type": "12 x 18 Print (Metallic)",
+        "price": 55
+      }, {
+        "type": "16 x 24 Print (Lustre)",
+        "price": 90
+      }, {
+        "type": "16 x 24 Print (Metallic)",
+        "price": 90
+      }, {
+        "type": "20 x 30 Print (Lustre)",
+        "price": 120
+      }, {
+        "type": "20 x 30 Print (Metallic)",
+        "price": 120
+      }, {
+        "type": "24 x 36 Print (Lustre)",
+        "price": 165
+      }, {
+        "type": "24 x 36 Print (Metallic)",
+        "price": 165
+      }
+    ],
+    "Other Sizes": [
+      {
+        "type": "30 x 45 Print (Lustre)",
+        "price": 220
+      }, {
+        "type": "30 x 45 Print (Metallic)",
+        "price": 220
+      }
+    ],
+    "Square Sizes": [
+      {
+        "type": "12 x 12 Print (Lustre)",
+        "price": 40
+      }, {
+        "type": "24 x 24 Print (Lustre)",
+        "price": 95
+      }, {
+        "type": "24 x 24 Print (Metallic)",
+        "price": 95
+      }
+    ]
+  },
+  "wallArt": {
+    "Traditional Canvas": [
+      {
+        "type": "Traditional Canvas 16 x 24",
+        "price": 295
+      }, {
+        "type": "Traditional Canvas 20 x 30",
+        "price": 425
+      }, {
+        "type": "Traditional Canvas 24 x 36",
+        "price": 575
+      }, {
+        "type": "Traditional Canvas 30 x 45",
+        "price": 780
+      }, {
+        "type": "Traditional Canvas 36 x 36",
+        "price": 675
+      }, {
+        "type": "Traditional Canvas 40 x 60",
+        "price": 1155
+      }
+    ],
+    "Metal": [
+      {
+        "type": "Metal 12 x 18",
+        "price": 180
+      }, {
+        "type": "Metal 16 x 24",
+        "price": 275
+      }, {
+        "type": "Metal 20 x 30",
+        "price": 425
+      }, {
+        "type": "Metal 24 x 36",
+        "price": 675
+      }, {
+        "type": "Metal 30 x 45",
+        "price": 925
+      }, {
+        "type": "Metal 40 x 60",
+        "price": 1495
+      }, {
+        "type": "Metal 40 x 90",
+        "price": 1975
+      }
+    ],
+    "Acrylic Metal": [
+      {
+        "type": "Acrylic Metal 20 x 30",
+        "price": 675
+      }, {
+        "type": "Acrylic Metal 24 x 36",
+        "price": 1025
+      }, {
+        "type": "Acrylic Metal 30 x 45",
+        "price": 1400
+      }
+    ]
+  }
+}
