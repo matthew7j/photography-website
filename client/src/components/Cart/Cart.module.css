@@ -1,3 +1,16 @@
 .cart {
-  color: #382c34
+  background-color: #1F1F1F;
+  color: #d7d3cb;;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 500px;
+  max-width: 1700px;
+}
+
+.cart h3 {
+  font-weight: lighter;
+  text-align: left;
+  margin: 0;
+  padding-left: 35px;
+  padding-bottom: 30px;
 }

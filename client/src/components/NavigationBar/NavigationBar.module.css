@@ -8,6 +8,15 @@
   padding: 0;
 }
 
+.toolbarInverted {
+  background-color:#1F1F1F;
+  color: #282c34;
+  border: none;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+}
+
 .typography {
   flex-grow: 1;
   text-align: center;
@@ -40,6 +49,6 @@
 }
 
 .typographyInverted a:hover {
-  color: black;
+  color: white;
   text-decoration: none;
 }

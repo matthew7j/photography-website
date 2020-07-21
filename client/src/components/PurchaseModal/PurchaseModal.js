@@ -20,7 +20,7 @@ const PurchaseModal = props => {
       currentProducts[existingProductIndex].totalPrice = currentProducts[existingProductIndex].totalPrice + price;
     } else {
       const item = {
-        photo: props.image.photo.src.match('^.*/([^.]*).*$')[1],
+        photo: props.image.photo.src,
         product,
         price,
         totalPrice: price,
@@ -33,6 +33,7 @@ const PurchaseModal = props => {
 
   const addToCart = items => {
     props.onAddToCart(items);
+    props.close();
   };
 
   const incrementItem = product => {

@@ -5,7 +5,7 @@
   color: #d7d3cb;
   background-color: #1F1F1F;
   outline: none;
-
+  
   font-weight: light;
   font-family: 'Titillium Web';
   font-size: large;
@@ -17,6 +17,7 @@
   margin: 0 auto;
   color: #d7d3cb;
   outline: none;
+  margin-bottom: 10%;
 
   font-weight: light;
   font-family: 'Titillium Web';

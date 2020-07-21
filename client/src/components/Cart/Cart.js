@@ -1,22 +1,54 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { ListItem, ListItemText, styled } from '@material-ui/core';
+import { Card, CardMedia, Grid, styled } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 
 import Button from '../Button/Button';
 import classes from './Cart.module.css';
 import * as actionTypes from '../../store/actions';
 
-const StyledListItemText = styled(ListItemText)({
-  fontSize: 'small'
+const StyledGridItem = styled(Grid)({
+  fontSize: '18px',
+  verticalAlign: 'middle',
+  alignItems: 'center'
 });
 
-const StyledListItem = styled(ListItem)({
-  margin: '0',
-  padding: '0',
-  paddingLeft: '15px',
-  '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, .1)'
+const StyledGridItemPrice = styled(Grid)({
+  fontSize: '20px',
+  verticalAlign: 'middle',
+  alignItems: 'center',
+  padding: '15px'
+});
+
+const StyledGridTotalItemPrice = styled(Grid)({
+  fontSize: '20px',
+  verticalAlign: 'middle',
+  alignItems: 'center',
+  padding: '20px',
+  border: '1px solid rgba(255, 255, 255, .1)',
+  maxHeight: '155px'
+});
+
+const StyledGridSmallText = styled(Grid)({
+  textAlign: 'left',
+  '& h2': {
+    fontSize: '16px',
+    margin: 0,
+    padding: 0,
+    display: 'inline',
+    fontWeight: 'normal'
+  },
+  '& h3': {
+    fontSize: '10px',
+    fontWeight: 'lighter',
+    margin: 0,
+    padding: 0,
+    display: 'inline'
   }
+});
+
+const StyledGridTotalPriceText = styled(Grid)({
+  textAlign: 'right'
 });
 
 const Cart = props => {
@@ -24,21 +56,119 @@ const Cart = props => {
     props.onClearCart();
   };
 
+  const incrementItem = (index) => {
+    let currentProducts = props.cart.slice();
+    currentProducts[index].count++;
+    currentProducts[index].totalPrice = currentProducts[index].totalPrice + currentProducts[index].price;
+    props.onClearCart();
+    props.onAddToCart(currentProducts);
+  };
+
+  const decrementItem = (index) => {
+    let currentProducts = props.cart.slice();
+    currentProducts[index].count--;
+    currentProducts[index].totalPrice = currentProducts[index].totalPrice - currentProducts[index].price;
+    if (currentProducts[index].count === 0) {
+      currentProducts.splice(index, 1);
+    }
+    props.onClearCart();
+    props.onAddToCart(currentProducts);
+  };
+
+  const removeItem = (index) => {
+    let currentProducts = props.cart.slice();
+    currentProducts.splice(index, 1);
+    props.onClearCart();
+    props.onAddToCart(currentProducts);
+  };
+
+  const continueShopping = () => {
+    props.history.push(`/photos`);
+  };
+
+  const checkout = () => {
+    props.history.push(`/checkout`);
+  };
+
+  let subtotalPrice = (props.cart.reduce((sum, next) => sum + (next.price * next.count), 0)).toFixed(2);
+  let tax = (subtotalPrice * .07).toFixed(2);
+  let totalPrice = (parseFloat(subtotalPrice) + parseFloat(tax)).toFixed(2);
+
   const cartJSX = props.cart.map((item, index) => {
+    const priceString = `$${ (item.price).toFixed(2) }`;
+    const subTotalString = `$${ subtotalPrice }`;
+    const totalPriceString = `$${ totalPrice }`;
+    const taxString = `$${ tax }`;
     return (
-      <StyledListItem div key = { index } className = { classes.nested }>
-        <StyledListItemText disableTypography className = { classes.nested } primary = { item.photo } />
-        <StyledListItemText disableTypography className = { classes.nested } primary = { item.product } />
-        <StyledListItemText disableTypography className = { classes.nested } primary = { item.count } />
-      </StyledListItem>
+      <Grid key = { index } container spacing = { 0 } style = {{ width: '100%', paddingBottom: '25px' }}>
+        <Grid item md = { 3 } sm = { 12 }>
+          <Card style = {{ margin: 'auto', borderRadius: '0', marginLeft: '35px' }}>
+            <CardMedia image = { item.photo } style = {{ height: 0, paddingTop: '56.25%' }}/>
+          </Card>
+        </Grid>
+        <StyledGridItem item md = { 3 } sm = { 6 } style = {{ textAlign: 'left', paddingLeft: '25px' }}>
+          { item.product }
+        </StyledGridItem>
+        <StyledGridItem item md = { 2 } sm = { 6 }>
+          <StyledGridItemPrice style = {{ textAlign: 'center' }}>
+            { priceString }
+          </StyledGridItemPrice>
+          <Button btnType = { 'decrementItem' } noButton = { item.count === 1} clicked = { () => decrementItem(index) }>-</Button>
+          <Button btnType = { 'number' }> { item.count } </Button>
+          <Button btnType = { 'incrementItem' } clicked = { () => incrementItem(index) }>+</Button>
+          <Button btnType = { 'removeItem' } clicked = { () => removeItem(index) }>x</Button>
+        </StyledGridItem>
+        { (index === 0) ?
+          <StyledGridTotalItemPrice item md = { 4 } sm = { false }>
+            <Grid container>
+              <StyledGridSmallText item md = { 8 } sm = { 6 } style = {{ paddingBottom: '10px' }}>
+                <h2>SUBTOTAL</h2>
+                <h3>  (ESTIMATE)</h3>
+              </StyledGridSmallText>
+              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
+                { subTotalString }
+              </StyledGridTotalPriceText>
+            </Grid>
+            <Grid container>
+              <StyledGridSmallText item md = { 8 } sm = { 6 } style = {{ paddingBottom: '10px' }}>
+                <h2>TAX</h2>
+              </StyledGridSmallText>
+              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
+                { taxString }
+              </StyledGridTotalPriceText>
+            </Grid>
+            <hr style = {{ marginTop: '1px' }}>
+            </hr>
+            <Grid container>
+              <StyledGridSmallText item md = { 8 } sm = { 6 }>
+                <h2>TOTAL</h2>
+                <h3>  (ESTIMATE)</h3>
+              </StyledGridSmallText>
+              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
+                { totalPriceString }
+              </StyledGridTotalPriceText>
+            </Grid>
+            <Button btnType = { 'checkout' } clicked = { checkout }>Begin Checkout</Button>
+            <br/>
+            <Button btnType = { 'continueShopping' } clicked = { continueShopping }>Continue Shopping</Button>
+          </StyledGridTotalItemPrice>
+        : null }
+      </Grid>
     )
   });
 
   return (
     <div className = { classes.cart }>
       <Fragment>
+        <Grid container spacing = { 0 } style = {{ width: '100%' }}>
+          <Grid item xs = { 6 }>
+            <h3>Shopping Cart</h3>
+          </Grid>
+          <Grid item xs = { 2 }>
+            <Button clicked = { clearCart } btnType = { 'clearCart' }> Clear Cart </Button>
+          </Grid>
+        </Grid>
         { cartJSX }
-        <Button clicked = { clearCart } btnType = { 'clearCart' }> Clear Cart </Button>
       </Fragment>
     </div>
   );
@@ -56,8 +186,14 @@ const mapDispatchToProps = dispatch => {
       return dispatch({
         type: actionTypes.CLEAR_CART
       });
+    },
+    onAddToCart: items => {
+      return dispatch({
+        type: actionTypes.ADD_TO_CART,
+        items: items
+      });
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Cart));

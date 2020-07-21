@@ -12,13 +12,16 @@
     "axios": "^0.19.2",
     "body-parser": "^1.18.3",
     "circular-json": "^0.5.9",
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "googleapis": "^54.1.0",
     "node-sass": "^4.14.1",
     "react-grid-gallery": "^0.5.5",
     "react-image-lightbox": "^5.1.1",
     "react-images": "^1.1.7",
-    "react-responsive-carousel": "^3.2.9"
+    "react-responsive-carousel": "^3.2.9",
+    "request": "^2.88.2",
+    "stripe": "^8.77.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"

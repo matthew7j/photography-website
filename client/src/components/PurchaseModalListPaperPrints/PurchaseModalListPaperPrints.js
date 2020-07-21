@@ -4,7 +4,6 @@ import { Collapse, List, ListItem, ListItemText, styled } from '@material-ui/cor
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import classes from './PurchaseModalListPaperPrints.module.css';
-import circularJson from 'circular-json';
 
 const StyledListItemText = styled(ListItemText)({
   fontSize: 'small'

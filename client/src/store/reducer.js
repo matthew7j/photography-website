@@ -14,10 +14,7 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.ADD_TO_CART:
       let cartArray = state.cart;
-      console.log(`got items! : ${JSON.stringify(action.items)}`);
-      console.log(`cartArray before: ${JSON.stringify(cartArray)}`);
       cartArray = cartArray.concat(action.items)
-      console.log(`cart array: ${JSON.stringify(cartArray)}`);
 
       return {
         ...state,

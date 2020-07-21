@@ -6,6 +6,7 @@ import PhotoGallery from '../../components/PhotoGallery/PhotoGallery';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Photo from '../../components/Photo/Photo';
 import Cart from '../../components/Cart/Cart';
+import Checkout from '../../components/Checkout/Checkout';
 import classes from './App.module.css';
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
             <Route exact path = '/photos'
               render = { () => (
                 <Fragment>
-                  <NavigationBar inverted = { false } ></NavigationBar>
+                  <NavigationBar inverted = { true } ></NavigationBar>
                   <PhotoGallery />
                 </Fragment>
               )}
@@ -35,7 +36,7 @@ class App extends Component {
             <Route exact path = '/photos/:id'
               render = { () => (
                 <Fragment>
-                  <NavigationBar inverted = { false } ></NavigationBar>
+                  <NavigationBar inverted = { true } ></NavigationBar>
                   <Photo/>
                 </Fragment>
               )}
@@ -44,7 +45,21 @@ class App extends Component {
             <Route exact path = '/cart'
               render = { () => (
                 <Fragment>
-                  <Cart></Cart>
+                  <NavigationBar inverted = { true } ></NavigationBar>
+                  <div style = {{ width: '90%', paddingRight: '35px' }}>
+                    <Cart></Cart>
+                  </div>
+                </Fragment>
+              )}
+            />
+
+            <Route exact path = '/checkout'
+              render = { () => (
+                <Fragment>
+                  <NavigationBar inverted = { true } ></NavigationBar>
+                  <div style = {{ width: '90%', paddingRight: '35px' }}>
+                    <Checkout></Checkout>
+                  </div>
                 </Fragment>
               )}
             />
