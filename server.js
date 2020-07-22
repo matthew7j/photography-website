@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const { google } = require('googleapis');
 const fs = require('fs');
 const stripe = require('stripe')('sk_test_51H7DOTJdeKSXNoJu4QP2yL0BXaNqU9X8T9Ch9YlIiI4Tdsp6wUN9IDMkYvN6RAxZQJknnlemQZSogYYRqvfFI6p700mD1E9qXm');
+const printPrices = require('./images/prices.json');
 
 require('dotenv').config()
 
@@ -28,9 +29,32 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get('/getConnectionToken', async (req, res) => {
-  let connectionToken = await stripe.terminal.connectionTokens.create();
-  res.json({ connectionToken });
+app.get('/secret', async (req, res) => {
+  const cart = req.query.cart;
+  const expectedPrice = parseFloat(req.query.expectedPrice).toFixed(2);
+
+  let subTotal = 0;
+
+  cart.forEach(item => {
+    const itemObject = JSON.parse(item);
+    subTotal += printPrices[itemObject.product].price;
+  });
+
+  let tax = (subTotal * .07).toFixed(2);
+  let totalPrice = ((parseFloat(subTotal) + parseFloat(tax))).toFixed(2);
+  const totalPriceFinal = (totalPrice * 100).toFixed(0);
+
+  if (totalPrice === expectedPrice) {
+    console.log('CHANGE ME TO HAPPEN BEFORE THE USER SUBMITS THE PAYMENT!');
+  }
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: totalPriceFinal,
+    currency: 'usd',
+    metadata: { integration_check: 'accept_a_payment' }
+  })
+
+  res.json({ client_secret: paymentIntent.client_secret });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

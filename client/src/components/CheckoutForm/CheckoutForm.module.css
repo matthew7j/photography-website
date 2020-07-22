@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+}
+
+input,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border-style: none;
+}
+
+html {
+  font-size: 16px;
+  font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AppWrapper {
+  width: 500px;
+  height: 400px;
+  position: relative;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale3D(0.95, 0.95, 0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale3D(1, 1, 1);
+  }
+}
+
+.label {
+  color: blue;
+}
+
+.Form {
+  animation: fade 200ms ease-out;
+}
+
+.FormGroup {
+  padding: 0;
+  will-change: opacity, transform;
+  border: 1px solid rgba(255, 255, 255, .1);
+  text-align: left;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.FormGroup p {
+  font-size: x-small;
+}
+
+.FormRow {
+  align-items: center;
+  text-align: left;
+}
+
+.FormRow:first-child {
+  border-top: none;
+}
+
+.FormRowLabel {
+  width: 100%;
+  min-width: 100px;
+  color: #d7d3cb;
+  font-size: 20px;
+  text-align: left;
+}
+
+.FormRowLabelSub {
+  width: 100%;
+  min-width: 100px;
+  color: #d7d3cb;
+  font-size: 14px;
+  text-align: left;
+}
+
+@keyframes void-animation-out {
+  0%,
+  to {
+    opacity: 1;
+  }
+}
+.FormRowInput:-webkit-autofill {
+  -webkit-text-fill-color: #383737;
+  /* Hack to hide the default webkit autofill */
+  transition: background-color 100000000s;
+  animation: 1ms void-animation-out;
+}
+
+.FormRowInput {
+  font-size: 16px;
+  width: 100%;
+  color: #383737;
+  background-color: #d7d3cb;
+  animation: 1ms void-animation-out;
+  padding: 10px;
+  margin-top: 5px;
+  font-family: 'Titillium Web';
+}
+
+.FormRowInput::placeholder {
+  color: rgba(0, 0, 0, .4);
+}
+
+.StripeElement--webkit-autofill {
+  background: transparent !important;
+}
+
+.StripeElement {
+  width: 100%;
+  padding: 11px 15px 11px 0;
+}
+
+.SubmitButton {
+  display: block;
+  font-size: 16px;
+  width: 150px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 25px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #33FF46;
+  color: #383737;
+}
+
+.SubmitButton:hover {
+  background-color: #89FF94;
+  color: #383737;
+}
+
+.SubmitButton:active {
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #e298d8;
+  transform: scale(0.99);
+}
+
+.SubmitButton.SubmitButton--error {
+  transform: translateY(15px);
+}
+.SubmitButton.SubmitButton--error:active {
+  transform: scale(0.99) translateY(15px);
+}
+
+.SubmitButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+.ErrorMessage {
+  color: #fff;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  font-size: 13px;
+  margin-top: 0px;
+  width: 100%;
+  transform: translateY(-15px);
+  opacity: 0;
+  animation: fade 150ms ease-out;
+  animation-delay: 50ms;
+  animation-fill-mode: forwards;
+  will-change: opacity, transform;
+}
+
+.ErrorMessage svg {
+  margin-right: 10px;
+}
+
+.Result {
+  margin-top: 50px;
+  text-align: center;
+  animation: fade 200ms ease-out;
+}
+
+.ResultTitle {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.ResultMessage {
+  color: #9cdbff;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.ResetButton {
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}

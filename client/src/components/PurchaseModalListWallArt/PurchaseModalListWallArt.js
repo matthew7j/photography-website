@@ -26,7 +26,7 @@ const PurchaseModalListWallArt = props => {
   const importAll = r => {
     return r.keys().map(r);
   }
-  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[1].wallArt;
+  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[2].wallArt;
 
   const canvasPrintOptions = printOptions['Traditional Canvas'];
   const canvasJSX = canvasPrintOptions.map(option => {

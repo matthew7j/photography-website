@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, Grid, styled } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import get from 'lodash/get';
 
 import Button from '../Button/Button';
 import classes from './Cart.module.css';
@@ -158,19 +159,25 @@ const Cart = props => {
   });
 
   return (
-    <div className = { classes.cart }>
-      <Fragment>
-        <Grid container spacing = { 0 } style = {{ width: '100%' }}>
-          <Grid item xs = { 6 }>
-            <h3>Shopping Cart</h3>
+    (get(props, 'location.state.payment') !== true) ? 
+      <div className = { classes.cart }>
+        <Fragment>
+          <Grid container spacing = { 0 } style = {{ width: '100%' }}>
+            <Grid item xs = { 6 }>
+              <h3>Shopping Cart</h3>
+            </Grid>
+            <Grid item xs = { 2 }>
+              <Button clicked = { clearCart } btnType = { 'clearCart' }> Clear Cart </Button>
+            </Grid>
           </Grid>
-          <Grid item xs = { 2 }>
-            <Button clicked = { clearCart } btnType = { 'clearCart' }> Clear Cart </Button>
-          </Grid>
-        </Grid>
-        { cartJSX }
-      </Fragment>
-    </div>
+          { cartJSX }
+        </Fragment>
+      </div>
+      :
+      <div style = {{ marginTop: '30px' }}>
+        Payment Successful!
+        <p style = {{ fontSize: '20px' }}>Please check your email for your confirmation of your purchase.</p>
+      </div>
   );
 };
 

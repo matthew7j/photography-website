@@ -57,7 +57,7 @@ class App extends Component {
               render = { () => (
                 <Fragment>
                   <NavigationBar inverted = { true } ></NavigationBar>
-                  <div style = {{ width: '90%', paddingRight: '35px' }}>
+                  <div style = {{ width: '100%' }}>
                     <Checkout></Checkout>
                   </div>
                 </Fragment>

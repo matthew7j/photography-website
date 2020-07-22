@@ -1,0 +1,65 @@
+{
+  "8 x 10 Print (Lustre)": {
+    "price": 35
+  }, "8 x 10 Print (Metallic)": {
+    "price": 35
+  }, "12 x 18 Print (Lustre)": {
+    "price": 55
+  }, "12 x 18 Print (Metallic)" : {
+    "price": 55
+  }, "16 x 24 Print (Lustre)": {
+    "price": 90
+  }, "16 x 24 Print (Metallic)": {
+    "price": 90
+  }, "20 x 30 Print (Lustre)": {
+    "price": 120
+  }, "20 x 30 Print (Metallic)": {
+    "price": 120
+  }, "24 x 36 Print (Lustre)": {
+    "price": 165
+  }, "24 x 36 Print (Metallic)": {
+    "price": 165
+  }, "30 x 45 Print (Lustre)": {
+    "price": 220
+  }, "30 x 45 Print (Metallic)": {
+    "price": 220
+  }, "12 x 12 Print (Lustre)": {
+    "price": 40
+  }, "24 x 24 Print (Lustre)": {
+    "price": 95
+  }, "24 x 24 Print (Metallic)": {
+    "price": 95
+  }, "Traditional Canvas 16 x 24": {
+    "price": 295
+  }, "Traditional Canvas 20 x 30": {
+    "price": 425
+  }, "Traditional Canvas 24 x 36": {
+    "price": 575
+  }, "Traditional Canvas 30 x 45": {
+    "price": 780
+  }, "Traditional Canvas 36 x 36": {
+    "price": 675
+  }, "Traditional Canvas 40 x 60": {
+    "price": 1155
+  }, "Metal 12 x 18": {
+    "price": 180
+  }, "Metal 16 x 24": {
+    "price": 275
+  }, "Metal 20 x 30": {
+    "price": 425
+  }, "Metal 24 x 36": {
+    "price": 675
+  }, "Metal 30 x 45": {
+    "price": 925
+  }, "Metal 40 x 60": {
+    "price": 1495
+  }, "Metal 40 x 90": {
+    "price": 1975
+  }, "Acrylic Metal 20 x 30": {
+    "price": 675
+  }, "Acrylic Metal 24 x 36": {
+    "price": 1025
+  }, "Acrylic Metal 30 x 45": {
+    "price": 1400
+  }
+}

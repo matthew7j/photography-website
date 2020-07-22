@@ -154,3 +154,19 @@
   background-color: transparent;
   color: white;
 }
+
+.submitPayment {
+  background-color: #33FF46;
+  color: #383737;
+  font-size: large;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.submitPayment:hover {
+  background-color: #89FF94;
+  color: #555555;
+}

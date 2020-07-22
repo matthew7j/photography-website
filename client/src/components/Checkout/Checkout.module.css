@@ -1,0 +1,15 @@
+.checkout {
+  max-width: 870px;
+  margin: 0 auto;
+  color: #d7d3cb;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.checkoutInfo {
+  margin: 0 auto;
+  padding-top: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  color: #d7d3cb;
+}

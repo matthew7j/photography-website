@@ -26,7 +26,7 @@ const PurchaseModalListPaperPrints = props => {
   const importAll = r => {
     return r.keys().map(r);
   }
-  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[1].paperPrints;
+  const printOptions = importAll(require.context('../../../../images', false, /\.(json)$/))[2].paperPrints;
 
   const standardPrintOptions = printOptions['Standard Sizes'];
   const standardJSX = standardPrintOptions.map(option => {
