@@ -24,7 +24,7 @@ const PhotoGallery = props => {
       const obj = {};
       obj.src = photo;
       obj.width = 320;
-      obj.height = 174;
+      obj.height = 180;
       listOfImages.push(obj);
     });
   }

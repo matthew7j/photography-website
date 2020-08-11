@@ -16,7 +16,7 @@ const Photo = props => {
           <Grid container spacing = { 0 }>
             <Grid style = {{ padding: '10px', paddingTop: '0' }} item xs = { 12 }>
               <Card style = {{ width: '100%', maxWidth: '1200px', margin: 'auto', borderRadius: '0' }}>
-                <CardMedia image = { props.image.photo.src } style = {{ height: 0, paddingTop: '56.25%' }}/>
+                <CardMedia image = { props.image.photo.src } style = {{ height: 0, paddingTop: '66.25%' }}/>
               </Card>
             </Grid>
           </Grid>

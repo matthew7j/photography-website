@@ -11,7 +11,10 @@ const StyledListItemText = styled(ListItemText)({
 });
 
 const StyledListItemTextTotal = styled(ListItemText)({
-  fontSize: 'large'
+  fontSize: 'large',
+  textAlign: 'center !important',
+  margin: '0 auto !important',
+  padding: '0 !important'
 });
 
 const StyledListItem = styled(ListItem)({

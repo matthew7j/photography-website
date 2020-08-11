@@ -10,7 +10,8 @@ import * as actionTypes from '../../store/actions';
 
 const StyledGridItem = styled(Grid)({
   fontSize: 'small',
-  alignItems: 'center'
+  alignItems: 'center',
+  fontWeight: 'lighter'
 });
 
 const StyledGridItemPrice = styled(Grid)({

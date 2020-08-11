@@ -12,26 +12,28 @@ const PhotoInformationContainer = props => {
   }
   const imageName = props.image.photo.src.match('^.*/([^.]*).*$')[1];
   const imageJson = importAll(require.context('../../../../images', false, /\.(json)$/))[0][imageName];
+  const imageSummary = get(imageJson, 'summary');
 
   return (
     <Fragment>
       <div className = { classes.photoInformationContainer }>
         <Grid container style = {{ padding: '10px' }}>
-          <Grid item xs = { 4 } style = {{ border: '1px solid rgba(0, 0, 0, .6)', backgroundColor: '#d7d3cb' }}>
-            <h3>Location</h3>
-            <p>{ get(imageJson, 'location') }</p>
+          <Grid item md = { 4 } sm = { 4 } xs = { 3 }>
+
           </Grid>
-          <Grid item xs = { 4 }>
+          <Grid item md = { 4 } sm = { 4 } xs = { 6 }>
             <Button btnType = { 'purchase' } clicked = { () => props.openModal(true) }>Purchase Photo</Button>
           </Grid>
-          <Grid item xs = { 4 } style = {{ border: '1px solid rgba(0, 0, 0, .6)', backgroundColor: '#d7d3cb' }}>
-            <h3>Camera Settings</h3>
-            <p>ISO: { get(imageJson, 'cameraSettings.iso') }</p>
+          <Grid item md = { 4 } sm = { 4 } xs = { 3 }>
           </Grid>
-          <hr style = {{ margin: '10px', border: 'none' }}></hr>
-          <Grid item xs = { 12 } style = {{ border: '1px solid rgba(0, 0, 0, .6)', backgroundColor: '#d7d3cb' }}>
-            <h3>Photo Summary</h3>
+          <Grid item md = { 3 } sm = { 3 } xs = { 3 }>
+          </Grid>
+          { (imageSummary) ? 
+          <Grid item xs = { 6 } style = {{ border: '1px solid rgba(0, 0, 0, .6)', backgroundColor: '#fff', fontSize: 'normal', fontWeight: 'lighter', marginTop: '20px', padding: '10px' }}>
             <p>{ get(imageJson, 'summary') }</p>
+          </Grid>
+          : <Grid item xs = { 6 }></Grid> }
+          <Grid item xs = { 3 }>
           </Grid>
         </Grid>
       </div>  
