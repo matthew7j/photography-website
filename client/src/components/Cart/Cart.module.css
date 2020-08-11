@@ -3,14 +3,43 @@
   color: #d7d3cb;;
   margin: 0 auto;
   width: 100%;
-  min-width: 500px;
   max-width: 1700px;
+  padding: 5%;
+  min-width: 340px;
 }
 
 .cart h3 {
   font-weight: lighter;
   text-align: left;
   margin: 0;
-  padding-left: 35px;
-  padding-bottom: 30px;
+}
+
+.itemsContainer {
+  float: left;
+  width: 70%;
+}
+
+@media(max-width: 980px) {
+  .itemsContainer {
+    float: left;
+    width: 100%;
+  }
+}
+
+.totalContainer {
+  float: right;
+  width: 30%;
+  margin: 0 auto;
+  max-width: 350px;
+}
+
+@media(max-width: 980px) {
+  .totalContainer {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    clear: both;
+    float: none;
+  }
 }

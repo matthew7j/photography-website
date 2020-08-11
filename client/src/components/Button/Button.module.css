@@ -33,39 +33,39 @@
 .incrementItem {
   background-color: #383737;
   color: #d7d3cb;
-  font-size: large;
+  font-size: small;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 }
 
 .decrementItem {
   background-color: #383737;
   color: #d7d3cb;
-  font-size: large;
+  font-size: small;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 }
 .removeItem {
   background-color: #FF5D5D;
   color: #383737;
-  font-size: large;
+  font-size: small;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 }
 
 .number {
   background-color: #d7d3cb;
   color: #383737;
-  font-size: large;
+  font-size: small;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 0;
   cursor: not-allowed;
   pointer-events: all !important;
@@ -74,11 +74,6 @@
 .number:hover {
   background-color: #d7d3cb;
   color: #383737;
-  font-size: large;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  margin: 0;
   cursor: not-allowed;
   pointer-events: all !important;
 }
@@ -86,10 +81,10 @@
 .clearCart {
   background-color: #383737;
   color: #d7d3cb;
-  font-size: large;
+  font-size: small;
   padding: 0;
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 30px;
   margin: 0;
 }
 
@@ -100,13 +95,14 @@
 
 .checkout {
   background-color: #33FF46;
-  margin-top: 40px;
+  margin-top: 5%;
   font-weight: 400;
+  font-size: 1em;
 }
 
 .checkout:hover {
   background-color: #89FF94;
-  margin-top: 40px;
+  margin-top: 5%;
 }
 
 .button:disabled {
@@ -146,13 +142,14 @@
   font-size: small;
   padding: 0;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 1%;
   padding: 10px;
 }
 
 .continueShopping:hover {
   background-color: transparent;
   color: white;
+  margin-top: 1%;
 }
 
 .submitPayment {

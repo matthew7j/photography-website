@@ -9,38 +9,36 @@ import classes from './Cart.module.css';
 import * as actionTypes from '../../store/actions';
 
 const StyledGridItem = styled(Grid)({
-  fontSize: '18px',
-  verticalAlign: 'middle',
+  fontSize: 'small',
   alignItems: 'center'
 });
 
 const StyledGridItemPrice = styled(Grid)({
-  fontSize: '20px',
+  fontSize: 'smaller',
   verticalAlign: 'middle',
-  alignItems: 'center',
-  padding: '15px'
+  alignItems: 'center'
 });
 
 const StyledGridTotalItemPrice = styled(Grid)({
-  fontSize: '20px',
+  fontSize: 'small',
   verticalAlign: 'middle',
   alignItems: 'center',
-  padding: '20px',
+  padding: '3%',
   border: '1px solid rgba(255, 255, 255, .1)',
-  maxHeight: '155px'
+  margin: '0 auto'
 });
 
 const StyledGridSmallText = styled(Grid)({
   textAlign: 'left',
   '& h2': {
-    fontSize: '16px',
+    fontSize: 'small',
     margin: 0,
     padding: 0,
     display: 'inline',
     fontWeight: 'normal'
   },
   '& h3': {
-    fontSize: '10px',
+    fontSize: 'small',
     fontWeight: 'lighter',
     margin: 0,
     padding: 0,
@@ -94,23 +92,24 @@ const Cart = props => {
   let subtotalPrice = (props.cart.reduce((sum, next) => sum + (next.price * next.count), 0)).toFixed(2);
   let tax = (subtotalPrice * .07).toFixed(2);
   let totalPrice = (parseFloat(subtotalPrice) + parseFloat(tax)).toFixed(2);
+  const subTotalString = `$${ subtotalPrice }`;
+  const totalPriceString = `$${ totalPrice }`;
+  const taxString = `$${ tax }`;
 
   const cartJSX = props.cart.map((item, index) => {
     const priceString = `$${ (item.price).toFixed(2) }`;
-    const subTotalString = `$${ subtotalPrice }`;
-    const totalPriceString = `$${ totalPrice }`;
-    const taxString = `$${ tax }`;
+    
     return (
-      <Grid key = { index } container spacing = { 0 } style = {{ width: '100%', paddingBottom: '25px' }}>
-        <Grid item md = { 3 } sm = { 12 }>
-          <Card style = {{ margin: 'auto', borderRadius: '0', marginLeft: '35px' }}>
+      <Grid key = { index } container spacing = { 0 } style = {{ marginBottom: '20px' }}>
+        <Grid item lg = { 4 } md = { 4 } sm = { 4 } xs = { 3 }>
+          <Card style = {{ margin: 'auto', borderRadius: '0' }}>
             <CardMedia image = { item.photo } style = {{ height: 0, paddingTop: '56.25%' }}/>
           </Card>
         </Grid>
-        <StyledGridItem item md = { 3 } sm = { 6 } style = {{ textAlign: 'left', paddingLeft: '25px' }}>
+        <StyledGridItem item lg = { 4 } md = { 4 } sm = { 4 } xs = { 3 } style = {{ textAlign: 'left', paddingLeft: '2%' }}>
           { item.product }
         </StyledGridItem>
-        <StyledGridItem item md = { 2 } sm = { 6 }>
+        <StyledGridItemPrice item lg = { 4 } md = { 4 } sm = { 4 } xs = { 6 }>
           <StyledGridItemPrice style = {{ textAlign: 'center' }}>
             { priceString }
           </StyledGridItemPrice>
@@ -118,42 +117,7 @@ const Cart = props => {
           <Button btnType = { 'number' }> { item.count } </Button>
           <Button btnType = { 'incrementItem' } clicked = { () => incrementItem(index) }>+</Button>
           <Button btnType = { 'removeItem' } clicked = { () => removeItem(index) }>x</Button>
-        </StyledGridItem>
-        { (index === 0) ?
-          <StyledGridTotalItemPrice item md = { 4 } sm = { false }>
-            <Grid container>
-              <StyledGridSmallText item md = { 8 } sm = { 6 } style = {{ paddingBottom: '10px' }}>
-                <h2>SUBTOTAL</h2>
-                <h3>  (ESTIMATE)</h3>
-              </StyledGridSmallText>
-              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
-                { subTotalString }
-              </StyledGridTotalPriceText>
-            </Grid>
-            <Grid container>
-              <StyledGridSmallText item md = { 8 } sm = { 6 } style = {{ paddingBottom: '10px' }}>
-                <h2>TAX</h2>
-              </StyledGridSmallText>
-              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
-                { taxString }
-              </StyledGridTotalPriceText>
-            </Grid>
-            <hr style = {{ marginTop: '1px' }}>
-            </hr>
-            <Grid container>
-              <StyledGridSmallText item md = { 8 } sm = { 6 }>
-                <h2>TOTAL</h2>
-                <h3>  (ESTIMATE)</h3>
-              </StyledGridSmallText>
-              <StyledGridTotalPriceText item md = { 4 } sm = { 6}>
-                { totalPriceString }
-              </StyledGridTotalPriceText>
-            </Grid>
-            <Button btnType = { 'checkout' } clicked = { checkout }>Begin Checkout</Button>
-            <br/>
-            <Button btnType = { 'continueShopping' } clicked = { continueShopping }>Continue Shopping</Button>
-          </StyledGridTotalItemPrice>
-        : null }
+        </StyledGridItemPrice>
       </Grid>
     )
   });
@@ -162,15 +126,54 @@ const Cart = props => {
     (get(props, 'location.state.payment') !== true) ? 
       <div className = { classes.cart }>
         <Fragment>
-          <Grid container spacing = { 0 } style = {{ width: '100%' }}>
+          <Grid container spacing = { 0 } style = {{ margin: '0 auto', width: '100%' }}>
             <Grid item xs = { 6 }>
               <h3>Shopping Cart</h3>
             </Grid>
-            <Grid item xs = { 2 }>
+            <Grid item xs = { 6 } style = {{ textAlign: 'right', marginBottom: '20px' }}>
               <Button clicked = { clearCart } btnType = { 'clearCart' }> Clear Cart </Button>
             </Grid>
           </Grid>
-          { cartJSX }
+          <div className = { classes.itemsContainer }>
+            <Grid container spacing = { 0 }>
+              { cartJSX }
+            </Grid>
+          </div>
+          <div className = { classes.totalContainer }>
+            <StyledGridTotalItemPrice>
+              <Grid container>
+                <StyledGridSmallText item md = { 8 } sm = { 6 } xs = { 6 } style = {{ paddingBottom: '10px' }}>
+                  <h2>SUBTOTAL</h2>
+                  <h3>  (ESTIMATE)</h3>
+                </StyledGridSmallText>
+                <StyledGridTotalPriceText item md = { 4 } sm = { 6 } xs = { 6 }>
+                  { subTotalString }
+                </StyledGridTotalPriceText>
+              </Grid>
+              <Grid container>
+                <StyledGridSmallText item md = { 8 } sm = { 6 } xs = { 6 }style = {{ paddingBottom: '10px' }}>
+                  <h2>TAX</h2>
+                </StyledGridSmallText>
+                <StyledGridTotalPriceText item md = { 4 } sm = { 6 } xs = { 6 }>
+                  { taxString }
+                </StyledGridTotalPriceText>
+              </Grid>
+              <hr style = {{ marginTop: '1px' }}>
+              </hr>
+              <Grid container>
+                <StyledGridSmallText item md = { 8 } sm = { 6 } xs = { 6 }>
+                  <h2>TOTAL</h2>
+                  <h3>  (ESTIMATE)</h3>
+                </StyledGridSmallText>
+                <StyledGridTotalPriceText item md = { 4 } sm = { 6 } xs = { 6 }>
+                  { totalPriceString }
+                </StyledGridTotalPriceText>
+              </Grid>
+              <Button btnType = { 'checkout' } clicked = { checkout }>Begin Checkout</Button>
+              <br/>
+              <Button btnType = { 'continueShopping' } clicked = { continueShopping }>Continue Shopping</Button>
+            </StyledGridTotalItemPrice>
+          </div>
         </Fragment>
       </div>
       :

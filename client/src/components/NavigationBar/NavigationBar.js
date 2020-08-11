@@ -35,15 +35,6 @@ const NavigationBar = props => {
             <Link className = { classes.link } href = '/photos'>
               PHOTOS
             </Link>
-            <Link className = { classes.link } href = '#'>
-              GEAR
-            </Link>
-            <Link className = { classes.link } href = '#'>
-              ABOUT ME
-            </Link>
-            <Link className = { classes.link } href = '#'>
-              CONTACT
-            </Link>
             <Link className = { classes.link } style = { style } href = '/cart'>
               { cartString }
             </Link>
